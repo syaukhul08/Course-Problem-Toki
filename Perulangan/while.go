@@ -1,24 +1,18 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-)
+import "fmt"
 
 func main() {
-
-	var words[] string
-
-	for range words {
-		scan := bufio.NewScanner(os.Stdin)
-		scan.Scan()
-
-		fmt.Scan(words)
+	var words []string
+	for {
+		var word string
+		_, err := fmt.Scanf("%s", &word)
+		if err != nil {
+			break
+		}
+		words = append(words, word)
 	}
-
-	for range words {
-		fmt.Println(words)
+	for i := 0; i < len(words); i++ {
+		fmt.Println(words[i])
 	}
-
 }
