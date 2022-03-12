@@ -1,29 +1,33 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	var n int
+	var n, s int
+	var arr [1001]int
+
+	for i := 0; i < 1001; i++ {
+		arr[i] = 0
+	}
 
 	fmt.Scan(&n)
 
-	var arr [100001]int
-	var num [1001]int
+	for i := 0; i < n; i++ {
+		fmt.Scan(&s)
+		arr[s]++
+	}
 
-	var modus int
+	max := 0
+	modus := 0
 
-	for i := 0; i < n+1; i++ {
-		fmt.Scanf("%d", &arr[i])
-		num[arr[i]]++
-		if num[arr[i]] >= num[modus] {
-			if num[arr[i]] > num[modus] {
-				modus = arr[i]
-			} else {
-				if arr[i] > modus {
-					modus = arr[i]
-				}
-			}
+	for i := 0; i <= 1000; i++ {
+		if max <= arr[i] && modus < i {
+			max = arr[i]
+			modus = i
 		}
 	}
-	fmt.Print(modus)
+
+	fmt.Println(modus)
 }
